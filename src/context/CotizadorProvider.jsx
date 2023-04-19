@@ -16,6 +16,7 @@ const CotizadorProvider = ({ children }) => {
     });
 
     const [resultado, setResultado] = useState(0);
+    const [cargando, setCargando] = useState(false);
 
     const handdlerChange = (e) => {
         setDatos({
@@ -45,6 +46,13 @@ const CotizadorProvider = ({ children }) => {
         resultado *= calcularPlan(datos.plan);
 
         resultado = formatearDinero(resultado);
+
+        setCargando(true);
+
+        setTimeout(() => {
+            setCargando(false);
+        }, 5000);
+
         setResultado(resultado);
     };
 
@@ -55,6 +63,7 @@ const CotizadorProvider = ({ children }) => {
                 datos,
                 cotizarSeguro,
                 resultado,
+                cargando,
             }}
         >
             {children}

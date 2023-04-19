@@ -4,13 +4,17 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Formulario = () => {
-    const { handdlerChange, datos } = useCotizador();
+    const { handdlerChange, datos, cotizarSeguro } = useCotizador();
 
     const handdlerSubmit = (e) => {
         e.preventDefault();
         if (Object.values(datos).includes("")) {
             toast.error("Debe rellenar todo el formulario");
+            return;
         }
+
+        //? Cotizando
+        cotizarSeguro();
     };
 
     return (

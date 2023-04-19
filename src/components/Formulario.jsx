@@ -20,7 +20,7 @@ const Formulario = () => {
     return (
         <>
             <ToastContainer theme="dark" />
-            <form onSubmit={handdlerSubmit}>
+            <form onSubmit={handdlerSubmit} className="mb-6">
                 <div className="mb-3">
                     <label
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"

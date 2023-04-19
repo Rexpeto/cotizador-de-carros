@@ -1,6 +1,9 @@
 import { marcas, years, planes } from "../constants";
+import useCotizador from "../hooks/useCotizador";
 
 const Formulario = () => {
+    const { handdlerChange } = useCotizador();
+
     return (
         <form>
             <div className="mb-3">
@@ -12,7 +15,9 @@ const Formulario = () => {
                 </label>
                 <select
                     id="marca"
+                    name="marca"
                     className="border text-sm rounded-lg  block w-full p-1.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-150"
+                    onChange={(e) => handdlerChange(e)}
                 >
                     <option value="">--Seleccionar--</option>
                     {marcas.map((marca) => (
@@ -31,6 +36,8 @@ const Formulario = () => {
                 </label>
                 <select
                     id="year"
+                    name="year"
+                    onChange={(e) => handdlerChange(e)}
                     className="border text-sm rounded-lg  block w-full p-1.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-150"
                 >
                     <option value="">--Seleccionar--</option>
@@ -53,6 +60,7 @@ const Formulario = () => {
                             type="radio"
                             value={plan.id}
                             name="plan"
+                            onChange={(e) => handdlerChange(e)}
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         />
                         <label

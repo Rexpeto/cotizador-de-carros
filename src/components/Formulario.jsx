@@ -4,19 +4,23 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Formulario = () => {
-    const { handdlerChange, datos } = useCotizador();
+    const { handdlerChange, datos, cotizarSeguro } = useCotizador();
 
     const handdlerSubmit = (e) => {
         e.preventDefault();
         if (Object.values(datos).includes("")) {
             toast.error("Debe rellenar todo el formulario");
+            return;
         }
+
+        //? Cotizando
+        cotizarSeguro();
     };
 
     return (
         <>
             <ToastContainer theme="dark" />
-            <form onSubmit={handdlerSubmit}>
+            <form onSubmit={handdlerSubmit} className="mb-6">
                 <div className="mb-3">
                     <label
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
